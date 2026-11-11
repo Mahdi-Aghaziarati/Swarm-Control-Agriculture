@@ -1,6 +1,8 @@
-Project Overview
+**Project Overview**
 
-All relevant explanations and requested details are clearly described in the Description_EN.pdf document.
+All relevant explanations and requested details are clearly described in the [Description_EN.pdf](./Description_EN.pdf) document.
+
+---
 
 <p align="center">
   <img src="./Project_Overview.jpg" alt="Overall System Architecture" width="650">
