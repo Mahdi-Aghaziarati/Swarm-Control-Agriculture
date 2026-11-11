@@ -58,3 +58,46 @@ source venv/bin/activate        # Linux / macOS
 
 # 3. Install dependencies
 pip install -r requirements.txt
+
+# ===========================================
+# Core / General
+# ===========================================
+numpy>=1.24.0,<3.0.0
+opencv-python>=4.8.0
+# opencv-python-headless>=4.8.0   # Use this instead on headless servers (no GUI)
+
+# ===========================================
+# YOLO / Deep Learning  (Tree & Fire.py)
+# ===========================================
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
+# For GPU (CUDA 11.8 example), install from the official index:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# ===========================================
+# ROS 1 – Noetic  (Termal Drone object detection.py)
+# ===========================================
+# NOTE: The following are NOT installable via pip. Install them with apt / rosdep:
+#   sudo apt install ros-noetic-ros-base
+#   sudo apt install ros-noetic-cv-bridge ros-noetic-image-transport
+#
+# Custom packages used by the code (must exist in your catkin/colcon workspace):
+#   technic
+#   led_msgs
+#
+# Only the following Python packages are pip-installable:
+rospkg>=1.5.0
+catkin-pkg>=0.5.2
+
+# ===========================================
+# Networking  (client socket.py / socket server.py)
+# ===========================================
+# The `socket` and `threading` modules are part of the Python standard library.
+# No external dependency is required.
+
+# ===========================================
+# Optional / Utilities
+# ===========================================
+pillow>=10.0.0          # Image saving/display helpers
+tqdm>=4.66.0            # Optional progress bars
