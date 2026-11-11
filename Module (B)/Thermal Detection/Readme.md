@@ -4,5 +4,5 @@
 ---
 
 <p align="center">
-  <img src="./image.PNG" alt="Result" width="650">
+  <img src="./image.jpg" alt="Result" width="650">
 </p>
