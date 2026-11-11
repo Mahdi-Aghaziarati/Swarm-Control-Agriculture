@@ -1,5 +1,5 @@
-# Module (A)
+<h2 align="center">Project Overview</h2>
 
-## Project Overview
-
-![Project Overview](./Project_Overview.jpg)
+<p align="center">
+  <img src="./Project_Overview.jpg" alt="Project Overview" width="850">
+</p>
