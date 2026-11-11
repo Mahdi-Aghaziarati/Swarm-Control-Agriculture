@@ -1,4 +1,3 @@
-
 **YOLO Object Detection**
 
 Including all documentation related to setting up Flight Zone tree detection.
