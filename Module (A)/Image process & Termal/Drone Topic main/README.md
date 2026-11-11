@@ -6,7 +6,7 @@ Welcome to the **Drone Topic Main** module directory. This folder serves as the 
 ---
 
 ## 📂 Directory Structure
-```text
+
 Drone Topic main/
 ├── Code/           # Source code, execution scripts, and dependencies
 ├── data/           # Raw and processed aerial imagery and datasets
@@ -30,6 +30,4 @@ Thermal Analysis: Handling radiometric and thermal raster datasets for specializ
 Modular Architecture: Maintaining a clean separation between raw data, source scripts, and generated outputs.
 📌 Maintenance Note
 For optimal path resolution across operating systems and to avoid command-line escaping issues with spaces, parentheses, and special characters (&), ensure proper quotation of directory paths when executing CLI commands.
-
-text
 
