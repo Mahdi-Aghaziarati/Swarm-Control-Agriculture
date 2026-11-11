@@ -1,5 +1,4 @@
 # Module (B)
----
 ## Module Structure
 
 | Folder | Description |
@@ -21,7 +20,3 @@
 <p align="center">
   <img src="./image.PNG" alt="" width="650">
 </p>
-
-## Maintainer
-
-Mahdi Aghaziarati — Module (B)
