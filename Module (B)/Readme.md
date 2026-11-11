@@ -13,8 +13,7 @@
 - **Fire Detection:** Uses computer vision models to detect flames in aerial imagery, enabling rapid fire alerts.
 - **Pest Detection:** Detects common crop pests in drone imagery to enable targeted pesticide spraying.
 - **Thermal Detection:** Uses a thermal camera to identify hot spots, water stress, and plant health status.
-- **YOLO:** Implements the YOLO model as the core object detection engine used by the subsystems above.
-
+- 
 ## Overview Image
 
 <p align="center">
