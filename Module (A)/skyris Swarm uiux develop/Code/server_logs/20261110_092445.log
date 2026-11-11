@@ -1,0 +1,12 @@
+2026-11-10 09:24:46,379 [root   ] [MainThread         ] [INFO   ]  Starting server with id: 9551 on 10.11.6.235:25000 (Hosein)!
+2026-11-10 09:24:46,379 [root   ] [MainThread         ] [INFO   ]  Binding server socket!
+2026-11-10 09:24:46,380 [root   ] [MainThread         ] [INFO   ]  Starting client processor thread!
+2026-11-10 09:24:46,380 [root   ] [Client processor   ] [INFO   ]  Client processor (selector) thread started!
+2026-11-10 09:24:46,380 [root   ] [MainThread         ] [INFO   ]  Starting broadcast sender thread!
+2026-11-10 09:24:46,380 [root   ] [IP broadcast sender] [INFO   ]  Broadcast sender thread started!
+2026-11-10 09:24:46,410 [messagi] [Client processor   ] [INFO   ]  Notify socket: connected
+2026-11-10 09:24:46,411 [messagi] [Client processor   ] [INFO   ]  Notify socket: selector registered
+2026-11-10 09:27:34,878 [root   ] [MainThread         ] [INFO   ]  Exit actions completed: config saved
+2026-11-10 09:27:34,879 [root   ] [MainThread         ] [INFO   ]  Stopping server
+2026-11-10 09:27:34,879 [root   ] [Client processor   ] [INFO   ]  Client autoconnect thread stopped!
+2026-11-10 09:27:34,879 [root   ] [MainThread         ] [INFO   ]  Server stopped

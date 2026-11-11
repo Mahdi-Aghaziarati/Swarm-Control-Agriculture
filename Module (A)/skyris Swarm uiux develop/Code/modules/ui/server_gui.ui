@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="styleSheet">
+   <string notr="true">/* Technic / Midnight Command. Qt 5 QSS, no assets or behavioural properties.
+   Light data surfaces deliberately retain dark text: model status brushes include
+   saturated yellow, green, cyan, white and red. Never override item backgrounds. */
+QMainWindow, QDialog {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #152237, stop:0.5 #0e192a, stop:1 #0a1321);
+}
+QWidget {
+    font-family: "Segoe UI", "Tahoma", sans-serif;
+    font-size: 12px;
+    color: #dbe6f3;
+}
+QWidget#centralwidget { background: transparent; }
+QLabel, QCheckBox { background: transparent; }
+QLabel { color: #9fb3ca; }
+QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #263950, stop:1 #1b2b40);
+    color: #dce8f5;
+    border: 1px solid #3a506b;
+    border-top-color: #4c6380;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-weight: 600;
+}
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #304b66, stop:1 #233c55);
+    border-color: #4d9baa; color: #ffffff;
+}
+QPushButton:pressed { background: #13273c; border-color: #54d7df; }
+QPushButton:focus { border-color: #75e6ef; }
+QPushButton:default { border-color: #61d7e2; }
+/* Filled primary: preparation check. */
+QPushButton#check_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #188b9f, stop:1 #126276);
+    color: #ffffff; border-color: #36a9b8; border-top-color: #66c9d3;
+}
+QPushButton#check_button:hover { background: #1b94a5; border-color: #85e3e8; }
+QPushButton#check_button:pressed { background: #105265; }
+/* Flight actions: muted emerald, not an indication of readiness. */
+QPushButton#start_button, QPushButton#takeoff_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #226756, stop:1 #184b42);
+    color: #defbf0; border-color: #378a73; border-top-color: #56a88e;
+}
+QPushButton#start_button:hover, QPushButton#takeoff_button:hover {
+    background: #287e66; border-color: #74cfaa;
+}
+QPushButton#start_button:pressed, QPushButton#takeoff_button:pressed { background: #133f36; }
+QPushButton#pause_button, QPushButton#flip_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #493c26, stop:1 #332e24);
+    color: #f3d59c; border-color: #7a653f; border-top-color: #9a7d4d;
+}
+QPushButton#pause_button:hover, QPushButton#flip_button:hover {
+    background: #59482b; border-color: #c3a164;
+}
+QPushButton#pause_button:pressed, QPushButton#flip_button:pressed { background: #2c261e; }
+QPushButton#land_selected_button { color: #b7deec; border-color: #4a7187; }
+QPushButton#land_all_button, QPushButton#disarm_all_button,
+QPushButton#disarm_selected_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #442c3a, stop:1 #302333);
+    color: #f3b6c1; border-color: #7c485c; border-top-color: #9b5b6e;
+}
+QPushButton#land_all_button:hover, QPushButton#disarm_all_button:hover,
+QPushButton#disarm_selected_button:hover { background: #593244; border-color: #c47b8e; }
+QPushButton#land_all_button:pressed, QPushButton#disarm_all_button:pressed,
+QPushButton#disarm_selected_button:pressed { background: #291b25; }
+/* Emergency remains distinct. Command scope and confirmation logic unchanged. */
+QPushButton#emergency_land_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #c23b50, stop:1 #94263d);
+    color: #ffffff; border-color: #e06a7b; border-top-color: #f18b96;
+    font-weight: 700;
+}
+QPushButton#emergency_land_button:hover { background: #d1475c; border-color: #ffb0bb; }
+QPushButton#emergency_land_button:pressed { background: #782236; }
+/* ID specificity is required so disabled operational buttons stay subdued. */
+QPushButton:disabled, QPushButton#check_button:disabled,
+QPushButton#start_button:disabled, QPushButton#takeoff_button:disabled,
+QPushButton#pause_button:disabled, QPushButton#flip_button:disabled,
+QPushButton#land_selected_button:disabled, QPushButton#land_all_button:disabled,
+QPushButton#disarm_all_button:disabled, QPushButton#disarm_selected_button:disabled,
+QPushButton#emergency_land_button:disabled {
+    background: #182337; color: #65778d;
+    border-color: #2b3b50; border-top-color: #2b3b50;
+}
+QLineEdit, QSpinBox, QDoubleSpinBox, QComboBox {
+    background: #0c1727; color: #e4eef9;
+    border: 1px solid #3a526c; border-radius: 5px;
+    padding: 4px; selection-background-color: #236d87; selection-color: #ffffff;
+}
+QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus { border-color: #54d1dc; }
+QLineEdit:disabled, QSpinBox:disabled, QDoubleSpinBox:disabled, QComboBox:disabled {
+    background: #172132; color: #65778d; border-color: #2b3b50;
+}
+QComboBox QAbstractItemView {
+    background: #1a2b41; color: #e4eef9; border: 1px solid #44617d;
+    selection-background-color: #25506c; selection-color: #ffffff;
+}
+QCheckBox { spacing: 5px; color: #b8c9dc; }
+QCheckBox:disabled { color: #65778d; }
+/* Do not style ::item backgrounds/hover: retain original diagnostic brushes.
+   This also reaches the CopterTableWidget created at runtime. */
+QTableView, QTreeView, QListView {
+    background: #edf2f7; alternate-background-color: #e6edf5; color: #17283b;
+    border: 1px solid #3c617c; border-top: 2px solid #36acbb;
+    border-radius: 5px; gridline-color: #c6d2e0;
+    selection-background-color: #b8dce9; selection-color: #102d43;
+}
+QTableView QLineEdit, QTreeView QLineEdit {
+    background: #ffffff; color: #17283b; border-color: #2492a5;
+    selection-background-color: #b8dce9; selection-color: #102d43;
+}
+QHeaderView { background: #182c43; }
+QHeaderView::section {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #233d56, stop:1 #172c43);
+    color: #d9edf7; font-weight: 600;
+    padding: 6px 5px; border: none;
+    border-right: 1px solid #35516c; border-bottom: 1px solid #3d778b;
+}
+QHeaderView::section:hover { background: #2b506a; color: #ffffff; }
+QTableCornerButton::section { background: #1b324b; border: 1px solid #35516c; }
+QMenuBar {
+    background: #0a1423; color: #b9cde3;
+    border-bottom: 1px solid #2f566c; padding: 3px;
+}
+QMenuBar::item { background: transparent; padding: 6px 12px; border-radius: 4px; }
+QMenuBar::item:selected { background: #203d55; color: #8aebf0; }
+QMenuBar::item:pressed { background: #2b526b; color: #ffffff; }
+QMenu {
+    background: #17283d; color: #dbe6f3;
+    border: 1px solid #44617d; padding: 4px;
+}
+QMenu::item { padding: 6px 24px; border-radius: 3px; }
+QMenu::item:selected { background: #28516a; color: #ffffff; }
+QMenu::item:disabled { color: #65778d; }
+QMenu::separator { height: 1px; background: #354c65; margin: 5px 8px; }
+QStatusBar { background: #0a1423; color: #9fb7cf; border-top: 1px solid #2b455e; }
+QStatusBar::item { border: none; }
+QStatusBar QLabel { color: #a7c0d8; }
+QFrame[frameShape="4"], QFrame[frameShape="5"] { color: #344b64; }
+QToolTip { background: #213951; color: #f0f7ff; border: 1px solid #54869b; padding: 6px; }
+</string>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1360</width>
+    <height>815</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Technic Drone Show</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMaximumSize</enum>
+      </property>
+      <item>
+       <widget class="QTableView" name="tableView">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectItems</enum>
+        </property>
+        <property name="textElideMode">
+         <enum>Qt::ElideMiddle</enum>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>50</number>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>50</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <property name="labelAlignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="start_text">
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>  Start after</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="start_delay_spin">
+            <property name="suffix">
+             <string> s</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_2">
+          <property name="labelAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="check_button">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Preflight check</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="start_button">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Start animation</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="pause_button">
+            <property name="text">
+             <string>Pause</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_5">
+          <property name="labelAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="land_selected_button">
+            <property name="text">
+             <string>Land selected</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="land_all_button">
+            <property name="text">
+             <string>Land ALL</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_7">
+          <property name="formAlignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="emergency_land_button">
+            <property name="text">
+             <string>Emergency land</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_3">
+          <property name="labelAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="disarm_all_button">
+            <property name="text">
+             <string>Disarm ALL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="disarm_selected_button">
+            <property name="text">
+             <string>Disarm selected</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_4">
+          <property name="labelAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="leds_button">
+            <property name="text">
+             <string>Test leds</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="takeoff_button">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Takeoff</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="z_checkbox">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>  Z     =</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="z_spin">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="suffix">
+               <string> m</string>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="value">
+               <double>1.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="1">
+           <widget class="QPushButton" name="flip_button">
+            <property name="text">
+             <string>Flip</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_6">
+          <property name="labelAlignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+          </property>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="reboot_fcu">
+            <property name="text">
+             <string>Reboot FCU</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="calibrate_gyro">
+            <property name="text">
+             <string>Calibrate gyro</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="calibrate_level">
+            <property name="text">
+             <string>Calibrate level</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1360</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Server</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_edit_server_config"/>
+    <addaction name="action_edit_any_config"/>
+    <addaction name="separator"/>
+    <addaction name="action_update_server_git"/>
+    <addaction name="action_restart_server"/>
+   </widget>
+   <widget class="QMenu" name="menuTable">
+    <property name="title">
+     <string>Table</string>
+    </property>
+    <addaction name="action_toggle_select"/>
+    <addaction name="action_select_all"/>
+    <addaction name="action_deselect_all"/>
+    <addaction name="separator"/>
+    <addaction name="action_remove_row"/>
+    <addaction name="separator"/>
+    <addaction name="action_configure_columns"/>
+   </widget>
+   <widget class="QMenu" name="menuDrone_2">
+    <property name="title">
+     <string>Selected drones</string>
+    </property>
+    <widget class="QMenu" name="menuSend">
+     <property name="title">
+      <string>Send</string>
+     </property>
+     <addaction name="action_send_animations"/>
+     <addaction name="action_send_calibrations"/>
+     <addaction name="separator"/>
+     <addaction name="action_send_aruco_map"/>
+     <addaction name="action_send_animation"/>
+     <addaction name="action_send_configurations"/>
+     <addaction name="action_send_launch_file"/>
+     <addaction name="action_send_fcu_parameters"/>
+     <addaction name="separator"/>
+     <addaction name="action_send_any_file"/>
+     <addaction name="action_send_any_command"/>
+    </widget>
+    <widget class="QMenu" name="menuRestart">
+     <property name="title">
+      <string>Restart service</string>
+     </property>
+     <addaction name="action_restart_chrony"/>
+     <addaction name="action_restart_clever"/>
+     <addaction name="action_restart_clever_show"/>
+     <addaction name="separator"/>
+    </widget>
+    <addaction name="menuSend"/>
+    <addaction name="action_retrive_any_file"/>
+    <addaction name="menuRestart"/>
+    <addaction name="separator"/>
+    <addaction name="action_set_start_to_current_position"/>
+    <addaction name="action_reset_start"/>
+    <addaction name="action_set_z_offset_to_ground"/>
+    <addaction name="action_reset_z_offset"/>
+    <addaction name="separator"/>
+    <addaction name="action_reboot_all"/>
+   </widget>
+   <addaction name="menuDrone_2"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuTable"/>
+  </widget>
+  <action name="action_send_animations">
+   <property name="text">
+    <string>Animations</string>
+   </property>
+  </action>
+  <action name="action_send_configurations">
+   <property name="text">
+    <string>Configuration</string>
+   </property>
+  </action>
+  <action name="action_send_aruco_map">
+   <property name="text">
+    <string>Aruco map</string>
+   </property>
+  </action>
+  <action name="action_update_client_repo">
+   <property name="text">
+    <string>Update clever-show git</string>
+   </property>
+  </action>
+  <action name="actionSend_launch_file_for_clever">
+   <property name="text">
+    <string>Send launch file for clever</string>
+   </property>
+  </action>
+  <action name="action_send_launch_file">
+   <property name="text">
+    <string>Launch files folder</string>
+   </property>
+  </action>
+  <action name="action_restart_clever">
+   <property name="text">
+    <string>technic</string>
+   </property>
+  </action>
+  <action name="action_restart_clever_show">
+   <property name="text">
+    <string>technic-show</string>
+   </property>
+  </action>
+  <action name="action_select_all_rows">
+   <property name="text">
+    <string>Select all drones</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_set_start_to_current_position">
+   <property name="text">
+    <string>Set start X Y to current position</string>
+   </property>
+  </action>
+  <action name="action_reset_start">
+   <property name="text">
+    <string>Reset start position</string>
+   </property>
+  </action>
+  <action name="action_set_z_offset_to_ground">
+   <property name="text">
+    <string>Set Z offset to ground</string>
+   </property>
+  </action>
+  <action name="action_reset_z_offset">
+   <property name="text">
+    <string>Reset Z offset</string>
+   </property>
+  </action>
+  <action name="action_select_music_file">
+   <property name="text">
+    <string>Select file</string>
+   </property>
+  </action>
+  <action name="action_play_music">
+   <property name="text">
+    <string>Play</string>
+   </property>
+  </action>
+  <action name="action_test_music_after">
+   <property name="text">
+    <string>Test music after</string>
+   </property>
+  </action>
+  <action name="actionFill">
+   <property name="text">
+    <string>fill</string>
+   </property>
+  </action>
+  <action name="action_send_any_file">
+   <property name="text">
+    <string>File</string>
+   </property>
+  </action>
+  <action name="action_send_any_command">
+   <property name="text">
+    <string>Command</string>
+   </property>
+  </action>
+  <action name="action_stop_music">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="action_remove_row">
+   <property name="text">
+    <string>Remove selected drones</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Del</string>
+   </property>
+  </action>
+  <action name="action_send_calibrations">
+   <property name="text">
+    <string>Camera calibrations</string>
+   </property>
+  </action>
+  <action name="action_reboot_all">
+   <property name="text">
+    <string>Reboot</string>
+   </property>
+  </action>
+  <action name="action_restart_chrony">
+   <property name="text">
+    <string>chrony</string>
+   </property>
+  </action>
+  <action name="action_send_fcu_parameters">
+   <property name="text">
+    <string>FCU parameters file</string>
+   </property>
+  </action>
+  <action name="action_toggle_select">
+   <property name="text">
+    <string>Toggle select</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_select_all">
+   <property name="text">
+    <string>Select all</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+A</string>
+   </property>
+  </action>
+  <action name="action_deselect_all">
+   <property name="text">
+    <string>Deselect all</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+A</string>
+   </property>
+  </action>
+  <action name="action_edit_server_config">
+   <property name="text">
+    <string>Edit server config</string>
+   </property>
+  </action>
+  <action name="action_edit_any_config">
+   <property name="text">
+    <string>Edit any config</string>
+   </property>
+  </action>
+  <action name="action_update_server_git">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Update server git</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action_retrive_any_file">
+   <property name="text">
+    <string>Retrive file</string>
+   </property>
+  </action>
+  <action name="action_restart_server">
+   <property name="text">
+    <string>Restart server</string>
+   </property>
+  </action>
+  <action name="action_configure_columns">
+   <property name="text">
+    <string>Configure columns</string>
+   </property>
+  </action>
+  <action name="actionSomething">
+   <property name="text">
+    <string>something</string>
+   </property>
+  </action>
+  <action name="action_send_animation">
+   <property name="text">
+    <string>Animation</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>start_delay_spin</tabstop>
+  <tabstop>tableView</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
