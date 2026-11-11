@@ -1,2 +1,0 @@
-PyQt5>=5.15.9,<6
-websocket-client>=1.7,<2
