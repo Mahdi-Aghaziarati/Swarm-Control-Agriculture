@@ -39,7 +39,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 | PyTorch / YOLOv26 | latest | Neural-network detection model |
 | DroneKit | latest | UAV control and telemetry |
 | ROS 1 | Noetic | Middleware |
-|  | latest | Operator web interface backend |
+| Qss / Pyqt5| latest | Operator web interface backend |
 | NumPy, Pandas | latest | Data processing |
 
 ---
