@@ -1,0 +1,31 @@
+nano thermal_ros_node.py
+
+nano thermal_ros_node.py
+
+http://10.42.0.1:8080
+sudo fuser -k /dev/video2
+
+
+1)python3 thermal_ros_node.py
+
+sudo fuser -k /dev/video2
+
+http://10.42.0.1:8088/video   
+
+
+
+2///////////////////////
+
+
+sudo fuser -k /dev/video2
+
+python3 thermal2_ros_node.py
+
+http://10.42.0.1:8088/video  
+
+
+sudo chmod 666 /dev/video2
+sudo fuser -k /dev/video2
+python3 thermal2_ros_node.py
+
+
