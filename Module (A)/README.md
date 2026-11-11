@@ -1,5 +1,5 @@
 <h2 align="center">Project Overview</h2>
 
 <p align="center">
-  <img src="./Project_Overview.jpg" alt="Project Overview" width="850">
+  <img src="./Project_Overview.jpg" alt="Project Overview" width="500">
 </p>
