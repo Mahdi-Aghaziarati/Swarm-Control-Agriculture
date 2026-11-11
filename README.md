@@ -38,7 +38,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 | OpenCV | 4.x | Computer vision / image processing |
 | PyTorch / YOLOv8 | latest | Neural-network detection model |
 | MAVSDK / DroneKit | latest | UAV control and telemetry |
-| ROS 2 (optional) | Humble+ | Swarm coordination middleware |
+| ROS 1 | Noetic | Swarm coordination middleware |
 | Flask / FastAPI | latest | Operator web interface backend |
 | NumPy, Pandas | latest | Data processing |
 
