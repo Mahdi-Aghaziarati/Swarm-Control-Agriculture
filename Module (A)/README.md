@@ -1,3 +1,5 @@
+All relevant explanations and requested details are clearly described in the [Description_EN.pdf](./Description_EN.pdf) document.
+
 <h2 align="center">Project Overview</h2>
 
 <p align="center">
