@@ -14,7 +14,6 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 | **Partner** | Agrotechnology Partner |
 | **Swarm size** | 3 UAVs (minimum separation: 0.5 m) |
 | **Detection method** | Thermal indicators (canopy temperature) + spectral indicators (leaf color) |
-| **AI model** | Neural-network detection, mAP@0.5 ≥ 85% |
 | **Max frame diagonal** | ≤ 10 inches (multirotor) |
 
 ### Key Features
@@ -26,7 +25,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 - ✅ Local coordinate determination and transmission to operator web UI
 - ✅ Swarm status display (positions, zones, mission status, detections)
 - ✅ Payload carrying and use by at least one drone
-- ✅ Neural-network detection in thermal images (mAP@0.5 ≥ 85%)
+- ✅ Thermal Detection
 
 ---
 
@@ -43,6 +42,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 | NumPy, Pandas | latest | Data processing |
 
 ---
+#Progres Description
 
 ## ⚙️ Installation
 
