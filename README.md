@@ -51,9 +51,10 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 ## Quick Access
 [Object Detection with YOLO for detect tree](https://github.com/Mahdi-Aghaziarati/Swarm-Control-Agriculture/tree/main/Module%20(B)/YOLO)
 
+[Pest Detection](https://github.com/Mahdi-Aghaziarati/Swarm-Control-Agriculture/tree/main/Module%20(B)/Pest%20Detection)
+
 [Proprietary software developed by our team for Skyris Drone](https://github.com/Mahdi-Aghaziarati/Swarm-Control-Agriculture/tree/main/Module%20%28B%29/Custom%20Drone%20Management%20Software)
 
-[Pest Detection](https://github.com/Mahdi-Aghaziarati/Swarm-Control-Agriculture/tree/main/Module%20(B)/Pest%20Detection)
 ## ⚙️ Installation
 
 ```bash
