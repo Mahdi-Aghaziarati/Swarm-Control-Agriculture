@@ -44,7 +44,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 ---
 ## Progress Description
 
-- **Day 1:** [Engineering design and development](./Module (A)/)
+- **Day 1:** [Engineering design and development](./Module%20(A)/)
 - **Day 2:** [Prototype functional verification](./Module (B)/)
 - **Day 3:** [Economic feasibility assessment](./day3/) | [Project Defense](./defense/)
 
