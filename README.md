@@ -42,7 +42,7 @@ A coordinated swarm-control system of small UAVs that autonomously surveys agric
 | NumPy, Pandas | latest | Data processing |
 
 ---
-##Progress Description
+## Progress Description
 
 ## ⚙️ Installation
 
