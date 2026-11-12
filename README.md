@@ -1,6 +1,8 @@
 # Swarm Control — Protecting Agricultural Land Against Insect Pests
 
-![Swarm UAV System](image.gif)
+<p align="center">
+  <img src="image.gif" width="800" alt="Swarm UAV System">
+</p>
 
 A coordinated swarm-control system of small UAVs that autonomously surveys agricultural plantations, detects early signs of pest infestation using thermal/spectral sensing and neural networks, and reports infested coordinates to an operator web interface.
 
