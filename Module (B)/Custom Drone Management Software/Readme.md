@@ -2,6 +2,6 @@
 
 
 <p align="center">
-  <img src="./CDMS_5.PNG" alt="GUI" width="650">
+  <img src="./CDMS_5.PNG" alt="GUI" width="700">
 </p>
 
