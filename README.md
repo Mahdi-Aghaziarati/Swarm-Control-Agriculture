@@ -73,5 +73,3 @@ source venv/bin/activate        # Linux / macOS
 
 # 3. Install dependencies
 pip install -r requirements.txt
-
-<meta name="google-site-verification" content="aNtyfd1GGszJ838IXBieeuud-z6CZh6FoY7mvWktlMI" />
